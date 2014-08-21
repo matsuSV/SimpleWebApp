@@ -4,48 +4,32 @@
  * and open the template in the editor.
  */
 
-package com.matsu.simplewebapp.content;
+package com.matsu.simplewebapp.user;
 
-import com.matsu.simplewebapp.user.UserData;
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
+import java.io.Serializable;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
  *
  * @author JP207528
  */
+@SessionScoped
 @Named
-public class Enter {
-    
-    private long id;
+public class UserData implements Serializable {
 
+    private long id ;
     private String password;
-    
-    @Inject
-    private UserData userData;
-    
-    public Enter() {
-    }
-    
-    @PostConstruct
-    public void init() {
-        this.id = userData.getId();
-        this.password = userData.getPassword();
-    }
 
     public long getId() {
         return id;
     }
-
     public void setId(long id) {
         this.id = id;
     }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }

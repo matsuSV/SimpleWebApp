@@ -6,7 +6,10 @@
 
 package com.matsu.simplewebapp.login;
 
-import com.matsu.simplewebapp.user.UserFolder;
+import com.matsu.simplewebapp.dao.DBExecuteImpl;
+import com.matsu.simplewebapp.user.UserData;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -14,6 +17,7 @@ import javax.inject.Named;
  *
  * @author JP207528
  */
+@RequestScoped
 @Named
 public class Login {
     
@@ -22,20 +26,20 @@ public class Login {
     private String password;
     
     @Inject
-    private UserFolder userfolder;
+    private UserData userData;
     
-       
+    @PostConstruct
+    public void init() {
+        System.out.println("@PostConstruct");
+    }
+    
     public String login() {
+       
+        userData.setId(this.id);
+        userData.setPassword(this.password);
         
-                System.out.println("Start id = " + this.id);
-        System.out.println("Start password = " + this.password);
-        
-        userfolder.setId(this.id);
-        userfolder.setPassword(this.password);
-        
-        System.out.println("Login id = " + userfolder.getId());
-        System.out.println("Login password = " + userfolder.getPassword());
-        
+        DBExecuteImpl.persistUserProfile(this.id, this.password);
+
         // URLを遷移先のもので表示させるためリダイレクトさせる
         return "enter.xhtml?faces-redirect=true";
     }
@@ -45,6 +49,14 @@ public class Login {
     }
     public void setId(long id) {
         this.id = id;
+    }
+
+    public UserData getUserData() {
+        return userData;
+    }
+
+    public void setUserData(UserData userData) {
+        this.userData = userData;
     }
 
     public String getPassword() {
