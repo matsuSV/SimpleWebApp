@@ -27,12 +27,94 @@
         <h:body>
             <h:panelGroup class="container">
                 <h2 class="form-signin-heading">Success Enter !!</h2>
-                
                 <h:outputText id="identification1" class="form-control" value="#{enter.id}"/>
                 <h:outputText id="password1" class="form-control" value="#{enter.password}"/>
-
            </h:panelGroup>
+
+           <h:panelGroup class="container">
+
+               <h:dataTable id="tb1" class="table table-bordered" var="class" value="#{enter.class01Slope90}">
+                   <h:column>
+                       <f:facet name="header">
+                          <h:outputText value=" 傾き"/>
+                      </f:facet>
+	               <h:outputText id="id1" value="090度"/>
+                   </h:column>
+               
+                   <h:column>
+                       <f:facet name="header">
+                           <h:outputText value="緑"/>
+                       </f:facet>
+	               <h:outputText id="green" value="#{class.green}"/>
+                   </h:column>
+               
+                   <h:column>
+                       <f:facet name="header">
+                          <h:outputText value="桃"/>
+                       </f:facet>
+	               <h:outputText id="pink" value="#{class.pink}"/>
+                   </h:column>
+               
+                   <h:column>
+                       <f:facet name="header">
+                          <h:outputText value="白"/>
+                       </f:facet>
+	               <h:outputText id="white" value="#{class.white}"/>
+                   </h:column>
+                   
+                   <h:column>
+                       <f:facet name="header">
+                          <h:outputText value="紫"/>
+                       </f:facet>
+	               <h:outputText id="purple" value="#{class.purple}"/>
+                   </h:column>
+               </h:dataTable>
+               
+               <h:dataTable id="tb2" class="table table-bordered" var="class" value="#{enter.class01Slope90}" >
+                   <h:column>
+	               <h:outputText id="id2" value="110度"/>
+                   </h:column>
+               
+                   <h:column>
+	               <h:outputText id="green2" value="#{class.green}"/>
+                   </h:column>
+               
+                   <h:column>
+	               <h:outputText id="pink2" value="#{class.pink}"/>
+                   </h:column>
+               
+                   <h:column>
+	               <h:outputText id="white2" value="#{class.white}"/>
+                   </h:column>
+                   
+                   <h:column>
+	               <h:outputText id="purple2" value="#{class.purple}"/>
+                   </h:column>
+               </h:dataTable>  
+               
+               <h:dataTable id="tb3" class="table table-bordered" var="class" value="#{enter.class01Slope90}" >
+                   <h:column>
+	               <h:outputText id="id3" value="120度"/>
+                   </h:column>
+               
+                   <h:column>
+	               <h:outputText id="green3" value="#{class.green}"/>
+                   </h:column>
+               
+                   <h:column>
+	               <h:outputText id="pink3" value="#{class.pink}"/>
+                   </h:column>
+               
+                   <h:column>
+	               <h:outputText id="white3" value="#{class.white}"/>
+                   </h:column>
+                   
+                   <h:column>
+	               <h:outputText id="purple3" value="#{class.purple}"/>
+                   </h:column>
+               </h:dataTable>  
+           </h:panelGroup>
+
         </h:body>
-        
     </f:view>
 </html>
