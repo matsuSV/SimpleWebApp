@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.matsu.simplewebapp.user;
 
 import java.io.Serializable;
@@ -18,7 +12,7 @@ import javax.inject.Named;
 @Named
 public class UserData implements Serializable {
 
-    private long id ;
+    private long id;
     private String password;
 
     public long getId() {

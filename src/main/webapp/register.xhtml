@@ -3,6 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
         xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     
   <f:view>
@@ -13,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>Signin Template for Bootstrap</title>
+        <title>Register User Data</title>
 
         <link rel="icon" href="resources/icon/favicon.ico" />
         <link rel="stylesheet" href="resources/bootstrap/custom/css/bootstrap.css" />
@@ -31,24 +33,24 @@
             window.onload = function() {
                 // TODO server側で払い出したIDを記述しているが、、、
                 document.getElementById("j_idt7:identification1").value = "";
-            };
+            }
         //]]>
         </script>
     
     <h:body>
         <h:panelGroup class="container">
             <h:form class="form-signin" role="form" >
-                <h2 class="form-signin-heading">Please sign in</h2>
+                <h2 class="form-signin-heading">Please Register</h2>
               
-                <h:inputText id="identification" class="form-control" pt:placeholder="ID" value="#{login.id}">
+                <h:inputText id="identification1" class="form-control" pt:placeholder="ID" value="#{login.id}">
                     <f:validateLongRange minimum="1" maximum="99999" />
                 </h:inputText>
                 <h:message for="identification1"/>
                 
-                <h:inputSecret id="password" class="form-control" pt:placeholder="Password" value="#{login.password}"/>
+                <h:inputSecret id="password1" class="form-control" pt:placeholder="Password" value="#{login.password}"/>
                
                 <!-- TODO : F5などのページ更新でもフォームデータを再送信する -->
-                <h:commandButton class="btn btn-lg btn-primary btn-block" value="Sign in" action="#{login.login()}"/>
+                <h:commandButton class="btn btn-lg btn-primary btn-block" value="Register" action="#{login.register()}"/>
             </h:form>
         </h:panelGroup>
     </h:body>

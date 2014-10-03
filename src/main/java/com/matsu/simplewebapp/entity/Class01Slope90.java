@@ -28,6 +28,8 @@ public class Class01Slope90 implements Serializable {
     private Date white;
     
     private Date purple;
+    
+    private Date red;
 
     public Class01Slope90() {
     }
@@ -71,4 +73,13 @@ public class Class01Slope90 implements Serializable {
     public void setPurple(Date purple) {
         this.purple = purple;
     }
+
+    public Date getRed() {
+        return red;
+    }
+
+    public void setRed(Date red) {
+        this.red = red;
+    }
+    
 }

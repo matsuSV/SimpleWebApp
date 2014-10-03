@@ -1,22 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.matsu.simplewebapp.login;
 
-import com.matsu.simplewebapp.dao.DBExecuteImpl;
+import com.matsu.simplewebapp.dao.UserProfileExecute;
+import com.matsu.simplewebapp.entity.UserProfile;
 import com.matsu.simplewebapp.user.Class01Data;
 import com.matsu.simplewebapp.user.UserData;
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
  *
- * @author JP207528
+ * 
  */
 @RequestScoped
 @Named
@@ -31,28 +25,36 @@ public class Login {
     
     @Inject
     private Class01Data class01Data;
-
-    @PostConstruct
-    public void init() {
-        System.out.println("@PostConstruct");
-    }
     
     public String login() {
        
         userData.setId(this.id);
         userData.setPassword(this.password);
-        
-//        DBExecuteImpl.persistUserProfile(this.id, this.password);
 
-        DBExecuteImpl dbei = new DBExecuteImpl();
-//        dbei.persistUserProfile(this.id, this.password);
+        UserProfileExecute dbei = new UserProfileExecute();
         
-        class01Data.setClass01Slope90(dbei.findClass01ById(1234L));
+        UserProfile userProfile = dbei.findUserProfileById(this.id);
+        if( null == userProfile ) {
+            // 登録がないユーザー
+            dbei.closeResources();
+            return "register.xhtml?faces-redirect=true";
+        }
         
+        class01Data.setClass01Slope90(dbei.findClass01ById(this.id));
         dbei.closeResources();
 
         // URLを遷移先のもので表示させるためリダイレクトさせる
-        return "insert.xhtml?faces-redirect=true";
+        return "enter.xhtml?faces-redirect=true";
+    }
+    
+    public String register() {
+        UserProfileExecute dbei = new UserProfileExecute();
+        dbei.persistUserProfile(this.id, this.password);
+        dbei.insertInitClass01Slope90(this.id);
+        dbei.closeResources();
+        
+        // URLを遷移先のもので表示させるためリダイレクトさせる
+        return "login.xhtml?faces-redirect=true";
     }
 
     public long getId() {

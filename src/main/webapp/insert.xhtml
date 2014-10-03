@@ -25,20 +25,17 @@
         </h:head>
     
         <h:body>
-            <h:panelGroup class="btn-group">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Action <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                </ul>
-            </h:panelGroup>
-
-
+           
+            <h:form>
+                <!-- IEとFirefoxではラベルの位置が違う-->
+                <h:selectOneRadio value="#{routeColor.selectedColor}">
+                    <f:selectItems value="#{routeColor.colors}" />
+                </h:selectOneRadio>
+                
+                <!-- TODO : F5などのページ更新でもフォームデータを再送信する -->
+                <h:commandButton class="btn btn-lg btn-primary btn-block" value="Sign in" action="#{login.login()}"/>
+            </h:form>
+            
         </h:body>
     </f:view>
 </html>

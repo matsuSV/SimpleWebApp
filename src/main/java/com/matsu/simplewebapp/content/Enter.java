@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.matsu.simplewebapp.content;
 
 import com.matsu.simplewebapp.entity.Class01Slope90;
@@ -14,8 +8,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
- * @author JP207528
+ * 
+ * 
+ * 
+ * 
  */
 @Named
 public class Enter {
@@ -67,7 +63,7 @@ public class Enter {
         this.class01Data = class01Data;
     }
     public Class01Slope90 getClass01Slope90() {
-        return class01Slope90;
+        return this.class01Slope90;
     }
     public void setClass01Slope90(Class01Slope90 class01Slope90) {
         this.class01Slope90 = class01Slope90;
