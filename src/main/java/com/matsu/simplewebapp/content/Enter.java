@@ -7,12 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-/**
- * 
- * 
- * 
- * 
- */
+
 @Named
 public class Enter {
     

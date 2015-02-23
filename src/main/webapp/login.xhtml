@@ -30,7 +30,7 @@
              */
             window.onload = function() {
                 // TODO server側で払い出したIDを記述しているが、、、
-                document.getElementById("j_idt7:identification1").value = "";
+                document.getElementById("j_idt7:id").value = "";
             };
         //]]>
         </script>
@@ -38,12 +38,14 @@
     <h:body>
         <h:panelGroup class="container">
             <h:form class="form-signin" role="form" >
-                <h2 class="form-signin-heading">Please sign in</h2>
-              
-                <h:inputText id="identification" class="form-control" pt:placeholder="ID" value="#{login.id}">
+                <h2 class="form-signin-heading">Welcome to</h2>
+                <h2 class="form-signin-heading">Sumlet High !</h2>
+                
+                <h:inputText id="id" class="form-control"  pt:placeholder="ID" value="#{login.id}" >
                     <f:validateLongRange minimum="1" maximum="99999" />
+                    <f:passThroughAttribute name="placeholder" value="ID" />
                 </h:inputText>
-                <h:message for="identification1"/>
+                <h:message for="id"/>
                 
                 <h:inputSecret id="password" class="form-control" pt:placeholder="Password" value="#{login.password}"/>
                

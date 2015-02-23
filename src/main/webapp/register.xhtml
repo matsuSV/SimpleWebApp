@@ -42,15 +42,15 @@
             <h:form class="form-signin" role="form" >
                 <h2 class="form-signin-heading">Please Register</h2>
               
-                <h:inputText id="identification1" class="form-control" pt:placeholder="ID" value="#{login.id}">
+                <h:inputText id="identification1" class="form-control" pt:placeholder="ID" value="#{register.id}">
                     <f:validateLongRange minimum="1" maximum="99999" />
                 </h:inputText>
                 <h:message for="identification1"/>
                 
-                <h:inputSecret id="password1" class="form-control" pt:placeholder="Password" value="#{login.password}"/>
+                <h:inputSecret id="password1" class="form-control" pt:placeholder="Password" value="#{register.password}"/>
                
                 <!-- TODO : F5などのページ更新でもフォームデータを再送信する -->
-                <h:commandButton class="btn btn-lg btn-primary btn-block" value="Register" action="#{login.register()}"/>
+                <h:commandButton class="btn btn-lg btn-primary btn-block" value="Register" action="#{register.register()}"/>
             </h:form>
         </h:panelGroup>
     </h:body>

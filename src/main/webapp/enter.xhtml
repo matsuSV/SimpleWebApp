@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
         xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
@@ -20,13 +21,17 @@
             <link rel="icon" href="resources/icon/favicon.ico" />
             <link rel="stylesheet" href="resources/bootstrap/custom/css/bootstrap.css" />
             <link rel="stylesheet" href="resources/other/css/signin.css" />
+            
+                        <link rel="stylesheet" href="resources/other/css/route.css" />
+
+            
             <script src="resources/other/js/ie-emulation-modes-warning.js" />
             <script src="resources/other/js/ie10-viewport-bug-workaround.js" />
         </h:head>
     
         <h:body>
             <h:panelGroup class="container">
-                <h2 class="form-signin-heading">Success Enter !!</h2>
+                <h2 class="form-signin-heading">Success Enter !!</h2>                
                 <h:outputText id="identification1" class="form-control" value="#{enter.id}"/>
                 <h:outputText id="password1" class="form-control" value="#{enter.password}"/>
            </h:panelGroup>
@@ -34,6 +39,11 @@
             <h:panelGroup class="container">
             <h:form>
                 <!-- IEとFirefoxではラベルの位置が違う-->
+                
+                <h:selectOneRadio value="#{routeColor.selectedLevel}">
+                    <f:selectItems value="#{routeColor.levels}" />
+                </h:selectOneRadio>
+                
                 <h:selectOneRadio value="#{routeColor.selectedColor}">
                     <f:selectItems value="#{routeColor.colors}" />
                 </h:selectOneRadio>
@@ -51,35 +61,35 @@
                
                <h1 class="form-signin-heading">1級</h1>
 
-               <h:dataTable id="tb1" class="table table-bordered" var="class" value="#{enter.class01Slope90}">
+               <h:dataTable id="tb1" headerClass="hd" columnClasses="col,col1,col2,col3,col4" class="table table-bordered" var="class" value="#{enter.class01Slope90}">
                    <h:column>
                        <f:facet name="header">
                           <h:outputText value=" 傾き"/>
                       </f:facet>
 	               <h:outputText id="id1" value="090度" />
                    </h:column>
-               
                    <h:column>
                        <f:facet name="header">
                            <h:outputText value="緑" style="background-color: green"/>
                        </f:facet>
 	               <h:outputText id="green" value="#{class.green}"/>
                    </h:column>
-               
                    <h:column>
                        <f:facet name="header">
                           <h:outputText value="桃" style="background-color: pink"/>
                        </f:facet>
-	               <h:outputText id="pink" value="#{class.pink}"/>
+                       
+                       <c:if test="#{!empty class.pink}">
+                          <h:outputText id="n_pink" value="----------"/>
+                       </c:if>
+                       <h:outputText id="pink" value="#{class.pink}"/>
                    </h:column>
-               
-                   <h:column>
+                   <h:column >
                        <f:facet name="header">
                           <h:outputText value="白" style="background-color: white"/>
                        </f:facet>
 	               <h:outputText id="white" value="#{class.white}"/>
                    </h:column>
-                   
                    <h:column>
                        <f:facet name="header">
                           <h:outputText value="紫" style="background-color: purple"/>
@@ -88,82 +98,45 @@
                    </h:column>
                </h:dataTable>
 
-               
                <h:dataTable id="tb2" class="table table-bordered" var="class" value="#{enter.class01Slope90}" >
                    <h:column>
-                       <f:facet name="header">
-                           <h:outputText value=" 傾き"/>
-                       </f:facet>
 	               <h:outputText id="id2" value="110度"/>
                    </h:column>
-               
                    <h:column>
-                       <f:facet name="header">
-                           <h:outputText value="緑" style="background-color: green"/>
-                       </f:facet>
 	               <h:outputText id="green2" value="#{class.green}"/>
                    </h:column>
-               
                    <h:column>
-                       <f:facet name="header">
-                          <h:outputText value="桃" style="background-color: pink"/>
-                       </f:facet>
+                       <c:if test="#{!empty class.pink}">
+                          <h:outputText id="n_pink2" value="----------"/>
+                       </c:if>
 	               <h:outputText id="pink2" value="#{class.pink}"/>
                    </h:column>
-               
                    <h:column>
-                       <f:facet name="header">
-                          <h:outputText value="白" style="background-color: white"/>
-                       </f:facet>
 	               <h:outputText id="white2" value="#{class.white}"/>
                    </h:column>
-                   
                    <h:column>
-                       <f:facet name="header">
-                          <h:outputText value="紫" style="background-color: purple"/>
-                       </f:facet>
 	               <h:outputText id="purple2" value="#{class.purple}"/>
                    </h:column>
                </h:dataTable>  
                
                <h:dataTable id="tb3" class="table table-bordered" var="class" value="#{enter.class01Slope90}" >
                    <h:column>
-                       <f:facet name="header">
-                           <h:outputText value=" 傾き"/>
-                       </f:facet>
 	               <h:outputText id="id3" value="120度"/>
                    </h:column>
-               
                    <h:column>
-                       <f:facet name="header">
-                           <h:outputText value="緑" style="background-color: green"/>
-                       </f:facet>
 	               <h:outputText id="green3" value="#{class.green}"/>
                    </h:column>
-               
                    <h:column>
-                       <f:facet name="header">
-                          <h:outputText value="桃" style="background-color: pink"/>
-                       </f:facet>
 	               <h:outputText id="pink3" value="#{class.pink}"/>
                    </h:column>
-               
                    <h:column>
-                       <f:facet name="header">
-                          <h:outputText value="白" style="background-color: white"/>
-                       </f:facet>
 	               <h:outputText id="white3" value="#{class.white}"/>
                    </h:column>
-                   
                    <h:column>
-                       <f:facet name="header">
-                          <h:outputText value="紫" style="background-color: purple"/>
-                       </f:facet>
 	               <h:outputText id="purple3" value="#{class.purple}"/>
                    </h:column>
                </h:dataTable>  
            </h:panelGroup>
-
         </h:body>
     </f:view>
 </html>

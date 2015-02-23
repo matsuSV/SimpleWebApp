@@ -5,7 +5,7 @@
  */
 package com.matsu.simplewebapp.content;
 
-import com.matsu.simplewebapp.dao.UserProfileExecute;
+import com.matsu.simplewebapp.dao.dbexecute.DBExecuteBean;
 import com.matsu.simplewebapp.entity.Class01Slope90;
 import com.matsu.simplewebapp.user.Class01Data;
 import com.matsu.simplewebapp.user.UserData;
@@ -26,9 +26,13 @@ import javax.inject.Named;
 @Named
 public class RouteColor {
     
+    private String selectedLevel;
+    
     private String selectedColor;
     
     private String selectedSlopes;
+    
+    private List<SelectItem> levels;
     
     private List<SelectItem> colors;
     
@@ -43,6 +47,13 @@ public class RouteColor {
     @PostConstruct
     public void init() {
         System.out.println("@PostConstruct RouteColor");
+        
+        List<SelectItem> ilevels = new ArrayList<>();
+        ilevels.add(new SelectItem("1grade", "初段　"));
+        ilevels.add(new SelectItem("1class", "1級　"));
+        ilevels.add(new SelectItem("2class", "2級　"));
+        ilevels.add(new SelectItem("3class", "3級　"));
+        this.levels = ilevels;
         
         List<SelectItem> icolors = new ArrayList<>();
         icolors.add(new SelectItem("green", "緑　"));
@@ -81,14 +92,31 @@ public class RouteColor {
             
             System.out.println(id);
         
-            UserProfileExecute dbei = new UserProfileExecute();
-            dbei.updateClass01Slope90Recode(class01Slope90);
-            dbei.closeResources();
+            DBExecuteBean c01s90 = new DBExecuteBean();
+
+            c01s90.update(class01Slope90);
+            c01s90.closeResources();
         }
         
         // URLを遷移先のもので表示させるためリダイレクトさせる
         return "enter.xhtml?faces-redirect=true";
         
+    }
+
+    public String getSelectedLevel() {
+        return selectedLevel;
+    }
+
+    public void setSelectedLevel(String selectedLevel) {
+        this.selectedLevel = selectedLevel;
+    }
+
+    public List<SelectItem> getLevels() {
+        return levels;
+    }
+
+    public void setLevels(List<SelectItem> levels) {
+        this.levels = levels;
     }
 
     public String getSelectedColor() {

@@ -6,6 +6,7 @@
 
 package com.matsu.simplewebapp.entity;
 
+import com.matsu.simplewebapp.entity.interfaces.IRouteTask;
 import java.io.Serializable;
 import java.sql.Date;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import javax.persistence.Id;
  * @author JP207528
  */
 @Entity
-public class Class01Slope90 implements Serializable {
+public class Class01Slope90 implements Serializable, IRouteTask {
     
     @Id
     private Long id;
@@ -29,8 +30,6 @@ public class Class01Slope90 implements Serializable {
     
     private Date purple;
     
-    private Date red;
-
     public Class01Slope90() {
     }
 
@@ -72,14 +71,6 @@ public class Class01Slope90 implements Serializable {
 
     public void setPurple(Date purple) {
         this.purple = purple;
-    }
-
-    public Date getRed() {
-        return red;
-    }
-
-    public void setRed(Date red) {
-        this.red = red;
     }
     
 }
