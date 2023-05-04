@@ -15,8 +15,8 @@ jobs:
           command: |
             mkdir artifacts;
   　　　　  - store_artifacts:
-     　　　　   path: artifacts/
-       　　　　 destination: artifact-file
+     　　　　　　　　　　path: artifacts/
+     　　　　　　　　　　destination: artifact-file
 
   test:
     docker:
