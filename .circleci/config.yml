@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   build:
-    working_directory: /tmp
+    # working_directory: /tmp
     docker:
       - image: circleci/openjdk:11.0.2-jdk-stretch
     steps:
@@ -14,14 +14,15 @@ jobs:
       - run:
           name: Creating Dummy Artifacts
           command: |
-            echo "my artifact file" > /tmp/art-1;
+            mkdir artifacts;
+            echo "my artifact file" > artifacts/art-1;
             mkdir /tmp/artifacts;
-            echo "my artifact files in a dir" > /tmp/artifacts/art-2;
+            echo "my artifact files in a dir" > artifacts/art-2;
       - store_artifacts:
-          path: /tmp/art-1
+          path: artifacts/art-1
           destination: artifact-file
       - store_artifacts:
-          path: /tmp/artifacts
+          path: artifacts
 
   test:
     docker:
