@@ -10,10 +10,7 @@ jobs:
     steps:
       - checkout
       - run: mvn clean package
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            mkdir artifacts;
+      - run: mkdir artifacts;
      　　- store_artifacts:
      　　　　　　　　　　path: artifacts/
      　　　　　　　　　　destination: artifact-file
