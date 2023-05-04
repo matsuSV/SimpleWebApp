@@ -16,7 +16,7 @@ jobs:
             mkdir artifacts;
             echo "my artifact file" > artifacts/art-1;
       - store_artifacts:
-          path: artifacts/
+          path: ~/artifacts/
           destination: artifact.jar
 
   test:
