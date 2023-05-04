@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run: mvn clean package
       - store_artifacts:
-          path: /home/circleci/project/target/
+          path: /home/circleci/project/target/SimpleWebApp-1.0-SNAPSHOT.war
 #          destination: SimpleWebApp-1.0-SNAPSHOT.war
 
   test:
