@@ -9,7 +9,6 @@ jobs:
       - image: circleci/openjdk:11.0.2-jdk-stretch
     steps:
       - checkout
-      - maven/setup
       - run: mvn clean package
 
   test:
@@ -17,7 +16,6 @@ jobs:
       - image: circleci/openjdk:11.0.2-jdk-stretch
     steps:
       - checkout
-      - maven/setup
       - run: mvn test
 
 workflows:
