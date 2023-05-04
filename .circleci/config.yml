@@ -5,14 +5,12 @@ orbs:
 
 jobs:
   build:
+    working_directory: /tmp
     docker:
       - image: circleci/openjdk:11.0.2-jdk-stretch
     steps:
       - checkout
       - run: mvn clean package
-      
-    working_directory: /tmp
-    steps:
       - run:
           name: Creating Dummy Artifacts
           command: |
@@ -31,7 +29,7 @@ jobs:
     steps:
       - checkout
       - run: mvn test
-          
+
 workflows:
   maven_test:
     jobs:
