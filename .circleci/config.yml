@@ -10,15 +10,7 @@ jobs:
     steps:
       - checkout
       - run: mvn clean package
-
-  test:
-    docker:
-      - image: circleci/openjdk:11.0.2-jdk-stretch
-    steps:
-      - checkout
-      - run: mvn test
-
-　　 package:
+      
     working_directory: /tmp
     steps:
       - run:
@@ -32,10 +24,16 @@ jobs:
           destination: artifact-file
       - store_artifacts:
           path: /tmp/artifacts
+
+  test:
+    docker:
+      - image: circleci/openjdk:11.0.2-jdk-stretch
+    steps:
+      - checkout
+      - run: mvn test
           
 workflows:
   maven_test:
     jobs:
       - test
       - build
-      - package
