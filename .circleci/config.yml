@@ -12,7 +12,7 @@ jobs:
       - run: mvn clean package
       - store_artifacts:
           path: /home/circleci/project/target/
-          destination: SimpleWebApp-1.0-SNAPSHOT.war
+#          destination: SimpleWebApp-1.0-SNAPSHOT.war
 
   test:
     docker:
