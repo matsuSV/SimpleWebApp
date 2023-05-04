@@ -10,10 +10,9 @@ jobs:
     steps:
       - checkout
       - run: mvn clean package
-      - run: mkdir artifacts
       - store_artifacts:
-          path: artifacts/
-          destination: artifact-file.jar
+          path: /home/circleci/project/target/
+          destination: SimpleWebApp-1.0-SNAPSHOT.war
 
   test:
     docker:
