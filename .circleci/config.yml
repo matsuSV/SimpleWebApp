@@ -11,9 +11,9 @@ jobs:
       - checkout
       - run: mvn clean package
       - run: mkdir artifacts
-     　　- store_artifacts:
-     　　　　　　　　　　path: artifacts/
-     　　　　　　　　　　destination: artifact-file
+      - store_artifacts:
+          path: artifacts/
+          destination: artifact-file.jar
 
   test:
     docker:
